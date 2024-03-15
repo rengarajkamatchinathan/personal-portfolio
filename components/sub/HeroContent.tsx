@@ -25,7 +25,7 @@ const HeroContent = () => {
         >
           <p className="cursive text-[24px]">Hi , my name is</p>
           <span className="text-5xl">
-            Sanju K
+            Rengaraj K
           </span>
           <TypeAnimation
       sequence={[
