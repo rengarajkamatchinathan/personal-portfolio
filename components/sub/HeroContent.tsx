@@ -52,7 +52,7 @@ const HeroContent = () => {
           variants={slideInFromLeft(0.8)}
           className="text-lg text-gray-400 my-5 max-w-[500px]"
         >
-          I'm an undergrad student who constantly seeks out innovative solutions to everyday problems using Technology. I've experience in Web Development using different Tech Stacks.
+          I&apos;m an undergrad student who constantly seeks out innovative solutions to everyday problems using Technology. I&apos;ve experience in Web Development using different Tech Stacks.
 
         </motion.p>
 

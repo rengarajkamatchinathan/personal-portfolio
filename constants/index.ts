@@ -35,17 +35,18 @@ export const Skill_data = [
   ];
   
   export const Socials = [
-    {
+    { id:1,
       name: "Likedin",
       src: "/soc1.svg",
       url:'https://www.linkedin.com/in/rengarajk/'
     },
-    {
+    {  id:2,
       name: "Github",
       src: "/soc2.svg",
       url:'https://github.com/rengarajks'
     },
     {
+      id:3,
       name: "Instagram",
       src: "/instagram.svg",
       url:'https://www.instagram.com/rengaraj.k_/'

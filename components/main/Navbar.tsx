@@ -12,7 +12,7 @@ const Navbar = () => {
           href="#about-me"
           className="h-auto w-auto flex flex-row items-center"
         >
-          <div><img src="/favicon-32x32.png"></img></div>
+          <div><image href="/favicon-32x32.png"/></div>
 
           <div className="font-bold ml-[10px] hidden md:block text-gray-300 flex flex-row">
             
@@ -36,14 +36,17 @@ const Navbar = () => {
 
         <div className="flex flex-row gap-5">
           {Socials.map((social) => (
-            <Link href={social.url}>
+            <Link href={social.url} key={social.id}> 
+            
               <Image
+              
               src={social.src}
               alt={social.name}
               key={social.name}
               width={24}
               height={24}
             />
+             
             </Link>
           ))}
         </div>
