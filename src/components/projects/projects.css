@@ -51,6 +51,7 @@
     display: flex;
     align-items: center;
     column-gap: 0.25rem;
+    cursor: pointer;
 }
 
 .project__button-icon {
@@ -111,4 +112,18 @@
     .project__filters {
         column-gap: 0.25rem;
     }
+}
+
+.project__modal-stack {
+    text-align: center;
+    font-size: var(--medium-font-size);
+    /* padding: 0 1.3rem; */
+    margin-bottom: var(--mb-1);
+}
+
+.project__modal-description {
+    text-align: center;
+    font-size: var(--small-font-size);
+    padding: 0 1.3rem;
+    margin-bottom: var(--mb-1);
 }
