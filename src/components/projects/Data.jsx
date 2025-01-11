@@ -6,10 +6,22 @@ import Project5 from "../../assets/enrolinApp.jpg";
 import Project6 from "../../assets/tiktok.png";
 import Project7 from "../../assets/fitzguiderr.png";
 
+
 export const projectsData = [
+    {
+        id: 0,
+        image: 'project-fb/1.png',
+        images:['project-fb/1.png','project-fb/2.png','project-fb/3.png','project-fb/4.png','project-fb/5.png','project-fb/6.png','project-fb/7.png'],
+        title: "Facebook Classic Clone",
+        category: "Fullstack",
+        stack:"ReactJS,Redux,Tailwind CSS,MUI,Formik,Spring,MySql",
+        desc:"It is a facebook 2017 classic version built with React and Spring, real-time likes, comments, message and a personalized feed with sleek animations.",
+        links:["https://buymeacoffee.com/rengarajk/e/327747"],
+    },
     {
         id: 1,
         image: Project6,
+        images:['/project-Tiktok/1.png','/project-Tiktok/2.png','/project-Tiktok/3.png','/project-Tiktok/4.png','/project-Tiktok/5.png','/project-Tiktok/6.png','/project-Tiktok/7.png','/project-Tiktok/8.png','/project-Tiktok/9.png','/project-Tiktok/10.png','/project-Tiktok/11.png','/project-Tiktok/12.png','/project-Tiktok/13.png'],
         title: "TikTok Clone",
         category: "Fullstack",
         stack:"ReactJS,Redux,Tailwind CSS,MUI,Formik,Spring,MySql",
@@ -19,6 +31,7 @@ export const projectsData = [
     {
         id: 2,
         image: Project1,
+        images:[Project1],
         title: "Youtube Clone",
         category: "Fullstack",
         stack:"ReactJS,Tailwind CSS,Django,Python,Postgresql",
@@ -28,6 +41,7 @@ export const projectsData = [
     {
         id: 3,
         image: Project2,
+        images:[Project2],
         title: "AI Powered Socialmedia",
         category: "AI",
         stack:"Django,OpenCV,NLP,Scikit",
@@ -37,6 +51,7 @@ export const projectsData = [
     {
         id: 4,
         image: Project3,
+        images:[Project3],
         title: "Amzon Frontend Clone",
         category: "Fullstack",
         stack:"ReactJS,Tailwind CSS",
@@ -46,6 +61,7 @@ export const projectsData = [
     {
         id: 5,
         image: Project4,
+        images:[Project4],
         title: "Instagram Frontend Clone",
         category: "Fullstack",
         stack:"ReactJS,Tailwind CSS",
@@ -55,6 +71,7 @@ export const projectsData = [
     {
         id: 6,
         image: Project5,
+        images:[Project5],
         title: "College Admission App",
         category: "Fullstack",
         stack:"Flutter,Dart,Firebase",
@@ -65,6 +82,7 @@ export const projectsData = [
     {
         id: 7,
         image: Project7,
+        images:[Project7],
         title: "FitZGuider Application",
         category: "Fullstack",
         stack:"ReactJS,Tailwind CSS,MUI,Localstorage",

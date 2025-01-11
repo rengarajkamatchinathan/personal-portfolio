@@ -116,7 +116,7 @@
 
 .project__modal-stack {
     text-align: center;
-    font-size: var(--medium-font-size);
+    font-size: var(--small-font-size);
     /* padding: 0 1.3rem; */
     margin-bottom: var(--mb-1);
 }
@@ -124,6 +124,7 @@
 .project__modal-description {
     text-align: center;
     font-size: var(--small-font-size);
-    padding: 0 1.3rem;
+    padding: 0 0.5rem;
     margin-bottom: var(--mb-1);
 }
+

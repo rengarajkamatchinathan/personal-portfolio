@@ -1,13 +1,40 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { HiOutlineArrowSmRight, HiOutlineCheckCircle, HiX } from 'react-icons/hi';
 import { useState } from 'react';
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 
 const ProjectItems = ({item}) => {
     const [toggleState, setToggleState] = useState(0);
-
+    
+    const[imageIndex,setImageIndex]=useState(0);
+    const handleLeft=()=>{
+        if(imageIndex==0){
+            setImageIndex(item.images.length-1)
+        }else{
+            setImageIndex(imageIndex-1);
+        }
+    }
+    const handleRight=()=>{
+        if(imageIndex==item.images.length-1){
+            setImageIndex(0)
+        }else{
+            setImageIndex(imageIndex+1);
+        }
+    }
     const toggleTab = (index) => {
         setToggleState(index);
     };
+    console.log('IMAGE INDEX=',item.images)
+
+    // Automatically call handleRight every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleRight();
+    }, 4000); // 3000 ms = 3 seconds
+
+    // Cleanup interval on component unmount
+    return () => clearInterval(interval);
+  }, [imageIndex]); // Depend on imageIndex for seamless updates
   return (
     <>
         <div className="project__card" key={item.id}>
@@ -22,6 +49,13 @@ const ProjectItems = ({item}) => {
                     <div className="services__modal-content">
                         <HiX onClick={() => toggleTab(0)} className="services__modal-close" />
                         <h3 className="services__modal-title">{item.title}</h3>
+                        
+                        {/* BANNER */}
+                        <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
+                            <div onClick={handleLeft} style={{cursor:'pointer'}} ><FaAngleLeft/></div>
+                            <img className="project__img" src={item?.images[imageIndex]} alt="" />
+                            <div onClick={handleRight} style={{cursor:'pointer'}}><FaAngleRight/></div>
+                        </div>
                         <p className="project__modal-stack">
                             [{item.stack}]
                         </p>
