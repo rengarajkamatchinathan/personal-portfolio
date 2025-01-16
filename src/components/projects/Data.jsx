@@ -28,6 +28,28 @@ export const projectsData = [
         desc:"A dynamic short-video sharing platform built with React and Spring, featuring seamless video uploads, real-time likes, comments, and a personalized feed with sleek animations.",
         links:["https://buymeacoffee.com/rengarajk/e/327747"],
     },
+    ,
+    {
+        id: 1,
+        image: 'ethe/1.png',
+        images:['/ethe/1.png','/ethe/2.png','/ethe/3.png','/ethe/4.png','/ethe/5.png','/ethe/6.png','/ethe/7.png','/ethe/8.png','/ethe/9.png','/ethe/10.png','/ethe/11.png','/ethe/12.png','/ethe/13.png'],
+        title: "ETHE (E-commerce)",
+        category: "Fullstack",
+        stack:"ReactJS,Redux,Tailwind CSS,MUI,Formik,Spring,MySql",
+        desc:"Ethe is an advanced e-commerce platform designed to deliver seamless online shopping experiences. It integrates microservices architecture, featuring user authentication with JWT, secure payments, and a dynamic product catalog. With robust scalability and modern UI/UX, Ethe ensures efficient operations, personalized recommendations, and reliable services for both buyers and sellers.",
+        links:["https://etheecommerce.vercel.app/"],
+    }
+    ,
+    {
+        id: 1,
+        image: '/Spotify/1.png',
+        images:['/Spotify/1.png','/Spotify/2.png','/Spotify/3.png','/Spotify/4.png','/Spotify/5.png'],
+        title: "Spotify Clone",
+        category: "Fullstack",
+        stack:"ReactJS, Tailwind, MUI, APIs",
+        desc:"This application has functionalities like spotify and user can listen and add songs to playlist. user's favourite songs are stored locally.",
+        links:["https://musicplayerss.vercel.app/"],
+    },
     {
         id: 2,
         image: Project1,
