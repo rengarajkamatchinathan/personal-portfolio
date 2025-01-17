@@ -65,12 +65,26 @@ const ProjectItems = ({item}) => {
                         {
                             item.links.length>0&&<ul className="services__modal-services grid">
                             {
-                             item.links.map((i)=> <li className="services__modal-service">
-                             <HiOutlineCheckCircle className="services__modal-icon" />
-                             <p className="services__modal-info">
-                                 <a href={i}>{i}</a>
-                             </p>
-                         </li>)
+                             <div>
+                                <li className="services__modal-service">
+                                    <HiOutlineCheckCircle className="services__modal-icon" />
+                                    <p>Source Code:</p>
+                                    <p className="services__modal-info">
+                                        <a href={item.links[0]}>{item.links[0]}</a>
+                                    </p>
+                                </li>
+                                {
+                                    item.links.length>1&&
+                                    <li className="services__modal-service">
+                                      <HiOutlineCheckCircle className="services__modal-icon" />
+                                      <p>Live:</p>
+                                       <p className="services__modal-info">
+                                         <a href={item.links[1]}>{item.links[1]}</a>
+                                        </p>
+                                    </li>
+                                }
+                             </div>
+                             
                             }
                          </ul>
                         }

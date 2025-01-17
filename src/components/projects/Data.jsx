@@ -16,12 +16,12 @@ export const projectsData = [
         category: "Fullstack",
         stack:"ReactJS,Redux,Tailwind CSS,MUI,Formik,Spring,MySql",
         desc:"It is a facebook 2017 classic version built with React and Spring, real-time likes, comments, message and a personalized feed with sleek animations.",
-        links:["https://buymeacoffee.com/rengarajk/e/327747"],
+        links:["https://buymeacoffee.com/rengarajk/e/360037","https://facebook-classic.vercel.app/"],
     },
     {
         id: 1,
         image: Project6,
-        images:['/project-Tiktok/1.png','/project-Tiktok/2.png','/project-Tiktok/3.png','/project-Tiktok/4.png','/project-Tiktok/5.png','/project-Tiktok/6.png','/project-Tiktok/7.png','/project-Tiktok/8.png','/project-Tiktok/9.png','/project-Tiktok/10.png','/project-Tiktok/11.png','/project-Tiktok/12.png','/project-Tiktok/13.png'],
+        images:['/project-Tiktok/1.png','/project-Tiktok/2.png','/project-Tiktok/3.png','/project-Tiktok/4.png','/project-Tiktok/5.png','/project-Tiktok/6.png','/project-Tiktok/7.png','/project-Tiktok/8.png','/project-Tiktok/9.png','/project-Tiktok/10.png','/project-Tiktok/11.png','/project-Tiktok/12.png'],
         title: "TikTok Clone",
         category: "Fullstack",
         stack:"ReactJS,Redux,Tailwind CSS,MUI,Formik,Spring,MySql",
@@ -37,7 +37,7 @@ export const projectsData = [
         category: "Fullstack",
         stack:"ReactJS,Redux,Tailwind CSS,MUI,Formik,Spring,MySql",
         desc:"Ethe is an advanced e-commerce platform designed to deliver seamless online shopping experiences. It integrates microservices architecture, featuring user authentication with JWT, secure payments, and a dynamic product catalog. With robust scalability and modern UI/UX, Ethe ensures efficient operations, personalized recommendations, and reliable services for both buyers and sellers.",
-        links:["https://etheecommerce.vercel.app/"],
+        links:["https://buymeacoffee.com/rengarajk/e/360038","https://etheecommerce.vercel.app/"],
     }
     ,
     {
@@ -48,7 +48,7 @@ export const projectsData = [
         category: "Fullstack",
         stack:"ReactJS, Tailwind, MUI, APIs",
         desc:"This application has functionalities like spotify and user can listen and add songs to playlist. user's favourite songs are stored locally.",
-        links:["https://musicplayerss.vercel.app/"],
+        links:["https://buymeacoffee.com/rengarajk/e/360039","https://musicplayerss.vercel.app/"],
     },
     {
         id: 2,
@@ -99,7 +99,7 @@ export const projectsData = [
         stack:"Flutter,Dart,Firebase",
         desc:"Developed a fully automated college admission app using Flutter, Dart, and Firebase. It provides tailored functionalities for students and colleges, streamlining the admission process efficiently.",
         // repositoryLink:"https://github.com/rengarajks/Ai-powered-socialmedia"\
-        links:[]
+        links:['not available']
     },
     {
         id: 7,
