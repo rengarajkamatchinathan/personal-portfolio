@@ -19,7 +19,7 @@ const Footer = () => {
                 </li>
             </ul>
             <div className="footer__social">
-                <a href="https://www.instagram.com/rengarajkamatchinathan/" className="home__social-icon" target="_blank" rel="noreferrer">
+                <a href="https://www.instagram.com/rengaraj_kamatchinathan/" className="home__social-icon" target="_blank" rel="noreferrer">
                     <FiInstagram />
                 </a>
                 <a href="https://github.com/rengarajkamatchinathan" className="home__social-icon" target="_blank" rel="noreferrer">
