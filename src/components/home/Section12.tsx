@@ -86,7 +86,7 @@ const Section12 = () => {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              I'm a full-stack developer with expertise in AI, passionate about
+              I&apos;m a full-stack developer with expertise in AI, passionate about
               crafting intelligent, scalable applications. From sleek front-end
               designs to robust back-end architectures, I build solutions that
               drive impact and enhance user experiences.

@@ -77,7 +77,7 @@ const HomeSection6 = ({ id }: { id: string }) => {
           className="w-full"
         >
           <div className="w-full text-center mb-16">
-            <SectionTitle>Let's Connect</SectionTitle>
+            <SectionTitle>Let&apos;s Connect</SectionTitle>
             <motion.p
               className="text-lg text-[var(--textColorLight)] mt-2"
               variants={itemVariants}

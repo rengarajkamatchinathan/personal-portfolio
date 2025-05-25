@@ -25,7 +25,7 @@ const HomeSection1 = ({ id }: Readonly<{ id: string }>) => {
 
           <div className="inline-flex items-center text-glow">
             <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold text-[var(--textColor)] mr-3">
-              I'm
+            I&apos;m
             </h1>
             <FlipWords
               words={["Rengaraj K.", "@RengarajK."]}
@@ -34,7 +34,7 @@ const HomeSection1 = ({ id }: Readonly<{ id: string }>) => {
           </div>
 
           <p className="mt-4 text-base md:text-lg font-semibold text-[var(--textColorLight)] max-w-md">
-            I'll bring revolution to the world through technology
+            I&apos;ll bring revolution to the world through technology
           </p>
 
           <div className="gap-4 mt-12 lg:mt-16 flex flex-col md:flex-row">
