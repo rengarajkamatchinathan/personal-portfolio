@@ -19,7 +19,7 @@ const Info = () => {
       <div className="bg-[var(--container-color)] border border-black/10 rounded-xl text-center p-4">
         <HiOutlineTerminal className="text-2xl text-[var(--title-color)] mb-2 mx-auto" />
         <h3 className="text-sm font-medium">Completed</h3>
-        <span className="text-xs text-gray-500">12+ Projects</span>
+        <span className="text-xs text-gray-500">30+ Projects</span>
       </div>
 
       <div className="bg-[var(--container-color)] border border-black/10 rounded-xl text-center p-4">
@@ -60,7 +60,7 @@ const Section12 = () => {
           viewport={{ once: true }}
         >
           <motion.div 
-            className="relative w-[300px] md:w-[350px] mx-auto rounded-2xl"
+            className="relative w-[200px] md:w-[240px] mx-auto rounded-2xl"
             whileHover={{
               boxShadow: "0 0 15px 4px rgba(255, 50, 50, 0.9)",
               borderColor: "rgba(255, 50, 50, 0.8)"
@@ -86,10 +86,7 @@ const Section12 = () => {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              I&apos;m a full-stack developer with expertise in AI, passionate about
-              crafting intelligent, scalable applications. From sleek front-end
-              designs to robust back-end architectures, I build solutions that
-              drive impact and enhance user experiences.
+              I&apos;m a full-stack developer passionate about AI, building smart, scalable apps that deliver real impact. From sleek UIs to solid backend systems, I turn ideas into powerful solutions. I&apos;ve completed several freelance projects across domains, blending innovation, AI, and clean code to solve real-world problems.
             </motion.p>
 
             <motion.a
