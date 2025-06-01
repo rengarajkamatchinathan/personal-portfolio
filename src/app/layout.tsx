@@ -102,7 +102,7 @@ const RootLayout = ({ children }: Readonly<{ children: ReactNode }>) => {
         {isDebug ? <WebVitals /> : null}
         <FloatingNavbar className="app_nav" navItems={navMenus} />
         <main>{children}</main>
-        <ScrollToTop />
+        {/* <ScrollToTop /> */}
       </body>
     </html>
   );

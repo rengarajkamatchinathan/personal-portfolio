@@ -10,6 +10,7 @@ const HomeSection5 = dynamic(() => import("@/components/home/Section5"));
 const HomeSection6 = dynamic(() => import("@/components/home/Section6"));
 
 import CustomCursor from '@/components/CustomCursor'
+import ArcReactorButton from "@/components/ArcReactorButton";
 
 const Home = () => {
   return (
@@ -40,6 +41,8 @@ const Home = () => {
         <HomeSection5 id="projects" />
         <HomeSection6 id="contact" />
       </PageBox>
+
+      <ArcReactorButton/>
     </div>
   );
 };
