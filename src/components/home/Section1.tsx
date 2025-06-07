@@ -28,7 +28,7 @@ const HomeSection1 = ({ id }: Readonly<{ id: string }>) => {
             I&apos;m
             </h1>
             <FlipWords
-              words={["Rengaraj K.", "@RengarajK."]}
+              words={["Rengaraj K", "@RengarajK"]}
               className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold text-[var(--primaryColor)] animate-glow"
             />
           </div>
