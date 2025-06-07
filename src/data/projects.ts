@@ -108,6 +108,21 @@ const projects: IProjectItem[] = [
     ]
   },
   {
+    id: "eyepoint",
+    title: "Eyepoint",
+    description:
+      "An eye-tracking analytics platform developed during an internship at TMachine. It monitors and analyzes user gaze patterns to determine screen focus areas. Built with a modern frontend and integrated backend AI models for gaze estimation.",
+    icon: "/skills/react.svg",
+    repoType: RepoType.Private,
+    projectType: ProjectType.JobWork,
+    githubUrl: "",
+    url: "",
+    tags: ["ReactJS", "Tailwind CSS", "Python", "OpenCV", "MediaPipe", "TensorFlow", "Dlib"],
+    screenshots: [
+      '/projects/ep/1.jpg'
+    ]
+  },
+  {
     id: "youtube-clone",
     title: "YouTube Clone",
     description:
@@ -118,6 +133,10 @@ const projects: IProjectItem[] = [
     githubUrl: "https://github.com/rengarajks/Videos-platform-fullstack-application",
     url: "",
     tags: ["ReactJS", "Tailwind CSS", "Django", "Python", "PostgreSQL"],
+    screenshots:[
+      '/projects/yt-clone/1.png',
+      '/projects/yt-clone/2.png'
+    ]
   },
   {
     id: "ai-socialmedia",
@@ -130,6 +149,9 @@ const projects: IProjectItem[] = [
     githubUrl: "https://github.com/rengarajks/Ai-powered-socialmedia",
     url: "",
     tags: ["Django", "OpenCV", "NLP", "Scikit"],
+    screenshots:[
+      '/projects/aisocial/social.jpeg',
+    ]
   },
   {
     id: "amazon-ui-clone",
@@ -142,6 +164,9 @@ const projects: IProjectItem[] = [
     githubUrl: "https://github.com/rengarajks/Amazon-clone-ReactJS",
     url: "",
     tags: ["ReactJS", "Tailwind CSS"],
+    screenshots:[
+      '/projects/amazon/ecom.jpeg'
+    ]
   },
   {
     id: "instagram-ui-clone",
@@ -154,6 +179,9 @@ const projects: IProjectItem[] = [
     githubUrl: "https://github.com/rengarajks/Instagram-clone-reactJS",
     url: "",
     tags: ["ReactJS", "Tailwind CSS"],
+    screenshots:[
+      '/projects/insta/1.png'
+    ]
   },
   {
     id: "college-admission-app",
@@ -166,6 +194,9 @@ const projects: IProjectItem[] = [
     githubUrl: "",
     url: "",
     tags: ["Flutter", "Dart", "Firebase"],
+    screenshots:[
+      '/projects/enrolin/1.png'
+    ]
   },
   {
     id: "fitzguider",
@@ -178,6 +209,10 @@ const projects: IProjectItem[] = [
     githubUrl: "https://github.com/rengarajks/fitZguider",
     url: "",
     tags: ["ReactJS", "Tailwind CSS", "MUI", "LocalStorage"],
+    screenshots:[
+      '/projects/fitz/1.png',
+      '/projects/fitz/2.png',
+    ]
   },
 ];
 
