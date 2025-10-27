@@ -165,7 +165,7 @@ const skills: ISkillListItem[] = [
         icon: "/skills/docker.png",
       },
       {
-        title: "Kubernates",
+        title: "Kubernetes",
         level: SkillLevel.Beginner,
         icon: "/skills/kubernetes.svg",
       },
