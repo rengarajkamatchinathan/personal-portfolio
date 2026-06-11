@@ -2,35 +2,48 @@ export interface Experience {
   id: string
   role: string
   company: string
-  period: string // e.g. "2023 — Present"
-  description: string // one or two lines of impact, not a tech list
-  current?: boolean // most-recent role → filled, glowing node
+  location?: string
+  start: string // ISO month, e.g. "2025-05"
+  end: string | null // null = present → rendered as the current role
+  description: string // supports **bold** segments
+  tags?: string[]
 }
 
-// Newest first. Placeholder content — edit with your real roles/dates.
+// Newest first. Period label + duration are computed from start/end at render.
 export const experience: Experience[] = [
   {
     id: "synergech",
-    role: "Software Engineer",
+    role: "Software Development Engineer",
     company: "Synergech Technologies",
-    period: "2023 — Present",
+    location: "Chennai",
+    start: "2024-08",
+    end: null,
     description:
-      "Build and ship production web applications end to end, and lead AI tooling initiatives across the stack.",
-    current: true,
+      "Core engineer on two AI products. **InfraGenie** turns a simple prompt into complex, production-ready infrastructure code — generating **Terraform/OpenTofu** configurations and provisioning them through **DeployIt**. **ATG** tests applications end-to-end using AI — autonomous agents that plan, execute, and validate test flows. Built the agentic backbone behind both: **multi-agent orchestration** with MCP, tool calling, and agent memory, backed by Redis caching and RabbitMQ messaging over FastAPI services and Next.js frontends. Also working platform-side for a **US insurance-domain client**.",
+    tags: [
+      "Next.js",
+      "FastAPI",
+      "System Design",
+      "Redis",
+      "RabbitMQ",
+      "AI",
+      "MCP",
+      "Agents",
+      "Multi-agent Orchestration",
+      "Tools",
+      "Memory",
+      "Caching",
+    ],
   },
   {
     id: "tmachine",
-    role: "Frontend Intern",
+    role: "Intern",
     company: "TMachine",
-    period: "2022 — 2023",
+    location: "Chennai",
+    start: "2023-12",
+    end: "2024-07",
     description:
-      "Built Eyepoint, an eye-tracking analytics platform pairing a React frontend with gaze-estimation models.",
-  },
-  {
-    id: "freelance",
-    role: "Freelance Developer",
-    company: "Self-employed",
-    period: "2021 — 2022",
-    description: "Delivered full-stack products and high-fidelity clones for clients across the web stack.",
+      "Built **Eyepoint**, an eye-tracking analytics platform. Developed gaze-estimation pipelines with **OpenCV, MediaPipe, and TensorFlow** — from camera capture through model inference (NumPy, scikit-learn) — served by a **Django** backend and paired with a **React** dashboard for visualizing gaze analytics.",
+    tags: ["Django", "React", "OpenCV", "scikit-learn", "NumPy", "MediaPipe", "TensorFlow", "Python"],
   },
 ]

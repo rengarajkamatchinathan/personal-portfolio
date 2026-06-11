@@ -4,7 +4,7 @@ export const profile = {
   name: "Rengaraj", // given name — used in first-person prose ("I'm Rengaraj…")
   fullName: "Rengaraj Kamatchinathan", // legal/full name — used in SEO & structured data
   brand: "Rengaraj K", // wordmark / site name
-  role: "Full-Stack Engineer",
+  role: "Software Development Engineer",
   location: "India",
   tagline: "Software Engineer & Full-Stack Developer",
   description:
