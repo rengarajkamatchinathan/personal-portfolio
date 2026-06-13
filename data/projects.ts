@@ -22,30 +22,12 @@ export const projectFilters = ["all", "in-progress", "completed"] as const
 
 export const projects: Project[] = [
   {
-    id: "infragenie",
-    title: "InfraGenie",
-    description:
-      "Describe the infrastructure you want and InfraGenie generates production-ready Terraform — an async LLM pipeline that plans, writes, and validates the code.",
-    tags: ["Next.js 16", "shadcn", "LangChain", "Redis", "FastAPI", "RabbitMQ"],
-    status: "in-progress",
-    year: "2026",
-  },
-  {
     id: "reno",
     title: "Reno",
     description:
       "A terminal-based agentic code generator in the spirit of the Claude Code CLI. Pick your tech stack and Reno scaffolds and writes the project from your prompts.",
     tags: ["CLI", "Agentic AI", "Code generation"],
     status: "in-progress",
-    year: "2026",
-  },
-  {
-    id: "atg",
-    title: "ATG",
-    description:
-      "AI that writes test cases for your application and then runs them against it — automated test authoring and execution in one loop.",
-    tags: ["Next.js 16", "shadcn", "LangChain", "Redis", "FastAPI", "RabbitMQ"],
-    status: "completed",
     year: "2026",
   },
   {
@@ -238,3 +220,7 @@ export const projects: Project[] = [
     screenshots: ["/projects/fitz/1.png", "/projects/fitz/2.png"],
   },
 ]
+
+export function getProjectById(id: string): Project | undefined {
+  return projects.find((p) => p.id === id)
+}

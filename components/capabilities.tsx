@@ -1,4 +1,4 @@
-import { LayoutTemplate, Server, Cloud, Brain } from "lucide-react"
+import { LayoutTemplate, Server, Cloud, Brain, Wrench } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
 import { SectionEyebrow } from "@/components/section-eyebrow"
 import { capabilities, type CapabilityIconKey } from "@/data/capabilities"
@@ -9,7 +9,24 @@ const iconMap: Record<CapabilityIconKey, LucideIcon> = {
   apis: Server,
   infra: Cloud,
   ai: Brain,
+  tools: Wrench,
 }
+
+// Bento layout: the two deepest stacks get a double-height tile, Tools runs full
+// width. Spans only kick in at sm/lg — on phones every tile is a plain stacked card.
+const spanClass: Partial<Record<CapabilityIconKey, string>> = {
+  ai: "lg:row-span-2",
+  apis: "lg:row-span-2",
+  tools: "sm:col-span-2 lg:col-span-3",
+}
+
+// Render order so the bento tiles pack with no gaps (tall tiles first, wide last).
+// Sort, don't hardcode the list — unknown/new domains just fall to the end.
+const bentoOrder: CapabilityIconKey[] = ["ai", "apis", "product", "infra", "tools"]
+const orderedDomains = [...capabilities.domains].sort(
+  (a, b) =>
+    (bentoOrder.indexOf(a.iconKey) + 1 || Infinity) - (bentoOrder.indexOf(b.iconKey) + 1 || Infinity),
+)
 
 export function Capabilities() {
   return (
@@ -21,13 +38,13 @@ export function Capabilities() {
           <p className="max-w-2xl text-base sm:text-lg text-muted-foreground leading-relaxed">{capabilities.intro}</p>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-2">
-          {capabilities.domains.map((domain, index) => {
+        <div className="grid gap-5 sm:grid-cols-2 lg:auto-rows-auto lg:grid-cols-3">
+          {orderedDomains.map((domain, index) => {
             const Icon = iconMap[domain.iconKey]
             return (
               <article
                 key={domain.title}
-                className="group relative overflow-hidden rounded-xl border border-border bg-card/40 glass p-6 sm:p-7 transition-all duration-400 hover:border-primary/40 hover:bg-card/60 active:scale-[0.99] hover-lift animate-fade-in-up"
+                className={`group relative overflow-hidden rounded-xl border border-border bg-card/40 glass p-6 sm:p-7 transition-all duration-400 hover:border-primary/40 hover:bg-card/60 active:scale-[0.99] hover-lift animate-fade-in-up ${spanClass[domain.iconKey] ?? ""}`}
                 style={{ animationDelay: `${index * 100 + 200}ms` }}
               >
                 <div className="mb-2 flex items-center gap-3">

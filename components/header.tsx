@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { Github, Twitter, Linkedin, Code2, Instagram } from "lucide-react"
@@ -28,6 +28,7 @@ export function Header() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const progressRef = useRef<HTMLDivElement>(null)
   const pathname = usePathname()
 
   const isActive = (href: string) => {
@@ -36,11 +37,29 @@ export function Header() {
   }
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
+    let raf = 0
+    // rAF-throttled: writes the fill/tip styles straight to the DOM so the header
+    // never re-renders on scroll. setIsScrolled only flips at the threshold, so React
+    // bails on the unchanged frames.
+    const update = () => {
+      raf = 0
+      const scrollTop = window.scrollY
+      setIsScrolled(scrollTop > 20)
+      const max = document.documentElement.scrollHeight - window.innerHeight
+      const progress = max > 0 ? Math.min(Math.max(scrollTop / max, 0), 1) : 0
+      if (progressRef.current) progressRef.current.style.transform = `scaleX(${progress})`
     }
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    return () => window.removeEventListener("scroll", handleScroll)
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update)
+    }
+    window.addEventListener("scroll", onScroll, { passive: true })
+    window.addEventListener("resize", onScroll, { passive: true })
+    update() // set the initial state on mount
+    return () => {
+      window.removeEventListener("scroll", onScroll)
+      window.removeEventListener("resize", onScroll)
+      if (raf) cancelAnimationFrame(raf)
+    }
   }, [])
 
   return (
@@ -215,6 +234,16 @@ export function Header() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Scroll progress — gradient line that grows left→right along the bottom edge.
+          Driven imperatively in the scroll effect above. */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-0.5">
+        <div
+          ref={progressRef}
+          className="h-full w-full origin-left bg-gradient-to-r from-primary to-accent"
+          style={{ transform: "scaleX(0)" }}
+        />
       </div>
     </header>
   )

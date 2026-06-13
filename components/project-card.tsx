@@ -1,11 +1,24 @@
+import Link from "next/link"
 import { cn } from "@/lib/utils"
-import { Github, ExternalLink } from "lucide-react"
+import { ArrowUpRight, Github, Globe, Images } from "lucide-react"
 import type { Project } from "@/data/projects"
 
+const MAX_TAGS = 5
+
 // Shared project card — used by the homepage Projects section and the /projects page.
+// The whole card links to the project's detail page (/projects/<id>); screenshots and
+// the live/source buttons live there, so the overview stays clean and text-focused.
 export function ProjectCard({ project, index = 0 }: { project: Project; index?: number }) {
+  const visibleTags = project.tags.slice(0, MAX_TAGS)
+  const hiddenTagCount = project.tags.length - visibleTags.length
+  const shotCount = project.screenshots?.length ?? 0
+  // year · visibility · category — built from whatever fields are present.
+  const meta = [project.year, project.repoType, project.category].filter(Boolean).join(" · ")
+
   return (
-    <article
+    <Link
+      href={`/projects/${project.id}`}
+      aria-label={`View ${project.title}`}
       className={cn(
         "group relative flex flex-col overflow-hidden rounded-xl border bg-card/40 glass transition-all duration-400 active:scale-[0.99] hover-lift hover:border-primary/40 hover:bg-card/70 animate-fade-in-up",
         project.highlight ? "sm:col-span-2 lg:col-span-2 border-primary/30" : "border-border/60",
@@ -13,21 +26,10 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
       )}
       style={{ animationDelay: `${(index % 6) * 100 + 200}ms` }}
     >
-      {project.image && (
-        <div className="overflow-hidden border-b border-border/60 bg-secondary/30">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={project.image}
-            alt={project.title}
-            className="aspect-video w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-          />
-        </div>
-      )}
-
       <div className="flex flex-1 flex-col p-6 sm:p-7">
-        {/* Meta row: year (left) + status (right) */}
+        {/* Meta row: year · visibility · category (left) + status (right) */}
         <div className="mb-3 flex items-center justify-between gap-3">
-          <span className="font-mono text-xs text-muted-foreground">{project.year ?? " "}</span>
+          <span className="font-mono text-xs text-muted-foreground">{meta || " "}</span>
           <span className="flex items-center gap-2.5">
             <span
               className={cn(
@@ -41,59 +43,55 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
           </span>
         </div>
 
-        <div className="mb-3 flex items-center gap-2">
+        <div className="mb-3 flex items-start justify-between gap-3">
           <h3 className="text-lg sm:text-xl font-bold tracking-tight transition-all duration-300 group-hover:text-gradient">
             {project.title}
           </h3>
-          {project.category === "work" && (
-            <span className="rounded border border-border/80 bg-secondary/60 px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
-              work
-            </span>
-          )}
+          <ArrowUpRight className="h-5 w-5 shrink-0 text-muted-foreground transition-all duration-300 group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </div>
 
         <p className="mb-5 text-sm leading-relaxed text-muted-foreground line-clamp-3">{project.description}</p>
 
         <div className="mb-5 flex flex-wrap gap-2">
-          {project.tags.map((tag) => (
+          {visibleTags.map((tag) => (
             <span
               key={tag}
-              className="rounded-md border border-border/80 bg-secondary/60 px-2.5 py-1 font-mono text-xs text-secondary-foreground transition-colors hover:border-primary/50 hover:bg-primary/10"
+              className="rounded-md border border-border/80 bg-secondary/60 px-2.5 py-1 font-mono text-xs text-secondary-foreground transition-colors group-hover:border-primary/30"
             >
               {tag}
             </span>
           ))}
+          {hiddenTagCount > 0 && (
+            <span className="rounded-md border border-dashed border-border/70 bg-secondary/30 px-2.5 py-1 font-mono text-xs text-muted-foreground">
+              +{hiddenTagCount}
+            </span>
+          )}
         </div>
 
-        {(project.github || project.live) && (
-          <div className="mt-auto flex items-center gap-4 pt-1">
-            {project.github && (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 font-mono text-xs text-muted-foreground hover:text-primary transition-all duration-300 group/link"
-              >
-                <Github className="h-4 w-4 transition-transform group-hover/link:scale-110" />
-                <span className="underline-animate">source</span>
-              </a>
-            )}
-            {project.live && (
-              <a
-                href={project.live}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 font-mono text-xs text-primary hover:text-foreground transition-all duration-300 group/link"
-              >
-                <ExternalLink className="h-4 w-4 transition-transform group-hover/link:scale-110 group-hover/link:rotate-12" />
-                <span className="underline-animate">live</span>
-              </a>
-            )}
-          </div>
-        )}
+        {/* Availability hints — what's waiting on the detail page (not links themselves). */}
+        <div className="mt-auto flex items-center gap-4 pt-1 font-mono text-[11px] text-muted-foreground">
+          {shotCount > 0 && (
+            <span className="inline-flex items-center gap-1.5">
+              <Images className="h-3.5 w-3.5" />
+              {shotCount} {shotCount === 1 ? "shot" : "shots"}
+            </span>
+          )}
+          {project.live && (
+            <span className="inline-flex items-center gap-1.5 text-primary/80">
+              <Globe className="h-3.5 w-3.5" />
+              live
+            </span>
+          )}
+          {project.github && (
+            <span className="inline-flex items-center gap-1.5">
+              <Github className="h-3.5 w-3.5" />
+              source
+            </span>
+          )}
+        </div>
       </div>
 
       <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-primary via-primary/80 to-transparent transition-all duration-500 group-hover:w-full" />
-    </article>
+    </Link>
   )
 }

@@ -1,6 +1,6 @@
 // Capabilities (Skills & Tools) section.
 // `iconKey` maps to a lucide icon inside components/capabilities.tsx (keeps this file pure data).
-export type CapabilityIconKey = "product" | "apis" | "infra" | "ai"
+export type CapabilityIconKey = "product" | "apis" | "infra" | "ai" | "tools"
 
 export interface Domain {
   title: string
@@ -36,6 +36,12 @@ export const capabilities = {
       tagline: "building agentic LLM apps",
       iconKey: "ai",
       tools: ["AI SDK", "LangChain", "MCP", "RAG", "Prompt caching", "Memory", "Tool calling", "Agents", "Embeddings", "Vector DBs"],
+    },
+    {
+      title: "Tools",
+      tagline: "the day-to-day workbench",
+      iconKey: "tools",
+      tools: ["VS Code", "Linux"],
     },
   ] satisfies Domain[],
   practices: ["System design", "Testing", "CI/CD", "Observability", "Code review", "Mentoring"],
