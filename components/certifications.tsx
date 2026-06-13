@@ -45,13 +45,13 @@ export function Certifications() {
       <div className="mx-auto max-w-7xl">
         <div className="mb-10 sm:mb-14 space-y-3 animate-fade-in-up">
           <SectionEyebrow path="certifications" />
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">Certifications</h2>
+          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl">Certifications</h2>
           <p className="max-w-2xl text-base sm:text-lg text-muted-foreground leading-relaxed">
             Credentials I&apos;ve earned along the way.
           </p>
         </div>
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {certifications.map((cert, index) => (
             <article
               key={cert.id}

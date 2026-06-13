@@ -19,7 +19,7 @@ export function About() {
       <div className="mx-auto max-w-7xl">
         <div className="space-y-3 animate-fade-in-up">
           <SectionEyebrow path="about" />
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">{about.heading}</h2>
+          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl">{about.heading}</h2>
         </div>
 
         <div className="mt-8 grid gap-8 lg:mt-10 lg:grid-cols-3 lg:gap-12">

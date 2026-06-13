@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rm -rf app/skills-preview)",
+      "Bash(ls app/skills-preview)",
+      "Bash(curl -s -o /tmp/home.html -w \"HTTP %{http_code}\\\\n\" http://localhost:3000/)",
+      "Bash(grep -ioE \"\\(Failed to compile|Module not found|SyntaxError|Unexpected token|ReferenceError|is not defined|Cannot read|Type error\\)[^<\\\\\"]{0,90}\" /tmp/home.html)",
+      "Bash(echo \"tsc exit: $?\")",
+      "Bash(rm -f components/skills-projects-filter.tsx)",
+      "Bash(curl -s -o /tmp/home2.html -w \"HTTP %{http_code}\\\\n\" http://localhost:3000/)",
+      "Bash(grep -ioE \"\\(Failed to compile|Module not found|ReferenceError|is not defined\\)[^<\\\\\"]{0,80}\" /tmp/home2.html)"
+    ]
+  }
+}

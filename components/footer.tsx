@@ -20,7 +20,7 @@ export function Footer() {
           <div className="space-y-6 sm:space-y-8 animate-fade-in-up">
             <div className="space-y-3">
               <SectionEyebrow path="connect" />
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl text-balance">
+              <h2 className="text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl text-balance">
                 {"Let's build something "}
                 <span className="bg-gradient-to-l from-primary/50 to-accent text-transparent bg-clip-text ">together</span>
               </h2>

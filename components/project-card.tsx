@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { cn } from "@/lib/utils"
-import { ArrowUpRight, Github, Globe, Images } from "lucide-react"
+import { ArrowUpRight, Github, Globe } from "lucide-react"
 import type { Project } from "@/data/projects"
 
 const MAX_TAGS = 5
@@ -11,7 +11,6 @@ const MAX_TAGS = 5
 export function ProjectCard({ project, index = 0 }: { project: Project; index?: number }) {
   const visibleTags = project.tags.slice(0, MAX_TAGS)
   const hiddenTagCount = project.tags.length - visibleTags.length
-  const shotCount = project.screenshots?.length ?? 0
   // year · visibility · category — built from whatever fields are present.
   const meta = [project.year, project.repoType, project.category].filter(Boolean).join(" · ")
 
@@ -69,26 +68,22 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
         </div>
 
         {/* Availability hints — what's waiting on the detail page (not links themselves). */}
-        <div className="mt-auto flex items-center gap-4 pt-1 font-mono text-[11px] text-muted-foreground">
-          {shotCount > 0 && (
-            <span className="inline-flex items-center gap-1.5">
-              <Images className="h-3.5 w-3.5" />
-              {shotCount} {shotCount === 1 ? "shot" : "shots"}
-            </span>
-          )}
-          {project.live && (
-            <span className="inline-flex items-center gap-1.5 text-primary/80">
-              <Globe className="h-3.5 w-3.5" />
-              live
-            </span>
-          )}
-          {project.github && (
-            <span className="inline-flex items-center gap-1.5">
-              <Github className="h-3.5 w-3.5" />
-              source
-            </span>
-          )}
-        </div>
+        {(project.live || project.github) && (
+          <div className="mt-auto flex items-center gap-4 pt-1 font-mono text-[11px] text-muted-foreground">
+            {project.live && (
+              <span className="inline-flex items-center gap-1.5 text-primary/80">
+                <Globe className="h-3.5 w-3.5" />
+                live
+              </span>
+            )}
+            {project.github && (
+              <span className="inline-flex items-center gap-1.5">
+                <Github className="h-3.5 w-3.5" />
+                source
+              </span>
+            )}
+          </div>
+        )}
       </div>
 
       <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-primary via-primary/80 to-transparent transition-all duration-500 group-hover:w-full" />

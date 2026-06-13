@@ -1,6 +1,7 @@
 import { LayoutTemplate, Server, Cloud, Brain, Wrench } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
 import { SectionEyebrow } from "@/components/section-eyebrow"
+import { BrandGlyph } from "@/components/brand-glyph"
 import { capabilities, type CapabilityIconKey } from "@/data/capabilities"
 
 // Maps the data's iconKey → a lucide icon, so the data file stays pure values.
@@ -10,6 +11,29 @@ const iconMap: Record<CapabilityIconKey, LucideIcon> = {
   infra: Cloud,
   ai: Brain,
   tools: Wrench,
+}
+
+// Proficiency from the data overlay: 3 = core (●●●), 1 = familiar (●○○),
+// everything else = working (●●○). Structural param widens the `as const`
+// literal tuples to readonly string[] so `.includes(string)` typechecks.
+function levelOf(domain: { core?: readonly string[]; familiar?: readonly string[] }, tool: string): 1 | 2 | 3 {
+  if (domain.core?.includes(tool)) return 3
+  if (domain.familiar?.includes(tool)) return 1
+  return 2
+}
+
+function DotMeter({ level }: { level: 1 | 2 | 3 }) {
+  return (
+    <span className="ml-0.5 inline-flex items-center gap-[3px]" aria-label={`proficiency ${level} of 3`}>
+      {[1, 2, 3].map((d) => (
+        <span
+          key={d}
+          className="h-[5px] w-[5px] rounded-full"
+          style={{ backgroundColor: "var(--primary)", opacity: d <= level ? 1 : 0.22 }}
+        />
+      ))}
+    </span>
+  )
 }
 
 // Bento layout: the two deepest stacks get a double-height tile, Tools runs full
@@ -34,13 +58,20 @@ export function Capabilities() {
       <div className="mx-auto max-w-7xl">
         <div className="mb-10 sm:mb-14 space-y-3 animate-fade-in-up">
           <SectionEyebrow path="skills" />
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">{capabilities.heading}</h2>
+          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl">{capabilities.heading}</h2>
           <p className="max-w-2xl text-base sm:text-lg text-muted-foreground leading-relaxed">{capabilities.intro}</p>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 pt-1 font-mono text-[11px] text-muted-foreground">
+            <span className="inline-flex items-center gap-1.5"><DotMeter level={3} /> core</span>
+            <span className="inline-flex items-center gap-1.5"><DotMeter level={2} /> working</span>
+            <span className="inline-flex items-center gap-1.5"><DotMeter level={1} /> familiar</span>
+          </div>
         </div>
 
         <div className="grid gap-5 sm:grid-cols-2 lg:auto-rows-auto lg:grid-cols-3">
           {orderedDomains.map((domain, index) => {
             const Icon = iconMap[domain.iconKey]
+            // strongest skills first (core → working → familiar)
+            const sorted = [...domain.tools].sort((a, b) => levelOf(domain, b) - levelOf(domain, a))
             return (
               <article
                 key={domain.title}
@@ -59,12 +90,14 @@ export function Capabilities() {
                 <p className="mb-5 pl-12 text-sm leading-relaxed text-muted-foreground">{domain.tagline}</p>
 
                 <div className="flex flex-wrap gap-2">
-                  {domain.tools.map((tool) => (
+                  {sorted.map((tool) => (
                     <span
                       key={tool}
-                      className="rounded-md border border-border/80 bg-secondary/60 px-2.5 py-1 font-mono text-xs text-secondary-foreground transition-colors hover:border-primary/50 hover:bg-primary/10"
+                      className="inline-flex items-center gap-1.5 rounded-md border border-border/80 bg-secondary/60 px-2.5 py-1 font-mono text-xs text-secondary-foreground transition-colors hover:border-primary/50 hover:bg-primary/10 hover:text-primary"
                     >
+                      <BrandGlyph name={tool} />
                       {tool}
+                      <DotMeter level={levelOf(domain, tool)} />
                     </span>
                   ))}
                 </div>

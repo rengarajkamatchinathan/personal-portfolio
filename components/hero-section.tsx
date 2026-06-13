@@ -43,7 +43,7 @@ export function HeroSection() {
               <p className="font-mono text-xs uppercase tracking-[0.25em] sm:tracking-[0.35em] text-primary">
                 {hero.eyebrow}
               </p>
-              <h1 className="text-4xl font-bold tracking-tight sm:text-4xl lg:text-5xl text-balance">
+              <h1 className="text-3xl font-bold tracking-tight sm:text-3xl lg:text-4xl text-balance">
                 {hero.headlineLead}
                 <br />
                 <span

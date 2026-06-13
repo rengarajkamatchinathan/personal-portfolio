@@ -77,7 +77,7 @@ export function ProjectDetail({ project }: { project: Project }) {
 
           <h1
             className={cn(
-              "text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-5 opacity-0",
+              "text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-5 opacity-0",
               isVisible && "animate-fade-in-up",
             )}
             style={{ animationDelay: "150ms" }}
