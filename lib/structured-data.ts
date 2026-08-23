@@ -59,7 +59,7 @@ export function generatePersonStructuredData() {
     '@type': 'Person',
     name: profile.fullName,
     url: profile.siteUrl,
-    image: `${profile.siteUrl}/profile.jpg`,
+    image: `${profile.siteUrl}${profile.avatar}`,
     sameAs: [profile.github, profile.x, profile.linkedin, profile.leetcode, profile.instagram],
     jobTitle: profile.role,
     address: {

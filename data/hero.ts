@@ -11,7 +11,7 @@ export const hero = {
     tail: ", and pulling existing ones apart to understand exactly how they work. If it's interesting, I'll figure it out — then make it better.",
   },
   portrait: {
-    src: "/profile.jpg",
+    src: profile.avatar,
     alt: profile.name,
   },
   badges: {

@@ -21,7 +21,7 @@ export interface BlogPost {
 
 const author = {
   name: profile.fullName,
-  avatar: "/profile.jpg",
+  avatar: profile.avatar,
   role: profile.role,
 }
 

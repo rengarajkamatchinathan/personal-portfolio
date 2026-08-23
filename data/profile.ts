@@ -17,4 +17,5 @@ export const profile = {
   xHandle: "@rengarajks",
   leetcode: "https://leetcode.com/u/rengaraj02k/",
   instagram: "https://www.instagram.com/rengaraj_kamatchinathan/",
+  avatar: "/profile.png", // portrait/headshot — hero, blog author, structured data
 } as const

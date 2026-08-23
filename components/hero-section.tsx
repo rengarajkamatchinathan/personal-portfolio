@@ -90,7 +90,7 @@ export function HeroSection() {
                 <img
                   src={hero.portrait.src}
                   alt={hero.portrait.alt}
-                  className="aspect-4/5 w-full rounded-lg object-cover grayscale transition-all duration-500 hover:grayscale-0"
+                  className="aspect-4/5 w-full rounded-lg object-cover transition-all duration-500 hover:saturate-150 hover:brightness-110"
                 />
               </div>
 
