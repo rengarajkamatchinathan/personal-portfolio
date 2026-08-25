@@ -40,10 +40,12 @@ export function HeroSection() {
           {/* Left column - Text */}
           <div className="space-y-8 sm:space-y-10">
             <div className="space-y-3 animate-fade-in-up">
-              <p className="font-mono text-xs uppercase tracking-[0.25em] sm:tracking-[0.35em] text-primary">
-                {hero.eyebrow}
-              </p>
-              <h1 className="text-3xl font-bold tracking-tight sm:text-3xl lg:text-4xl text-balance">
+              <div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.24em] text-primary">
+                <span className="inline-flex size-2 rounded-full bg-primary animate-pulse" />
+                <span>{hero.eyebrow}</span>
+                <span className="text-muted-foreground/50">// 04.26</span>
+              </div>
+              <h1 className="max-w-3xl text-4xl font-semibold tracking-[-0.04em] sm:text-5xl lg:text-7xl text-balance leading-[0.98]">
                 {hero.headlineLead}
                 <br />
                 <span
@@ -84,8 +86,13 @@ export function HeroSection() {
 
           {/* Right column - Photo */}
           <div className="flex justify-center lg:justify-end animate-scale-in stagger-4">
-            <div className="relative w-full max-w-60">
-              <div className="relative overflow-hidden rounded-xl border border-border bg-card/60 glass p-2 hover-lift">
+            <div className="relative w-full max-w-72">
+              <div className="absolute -inset-8 rounded-full border border-primary/15 rotate-12" />
+              <div className="absolute -inset-5 rounded-full border border-accent/20 -rotate-12" />
+              <div className="absolute -right-10 top-1/2 hidden -translate-y-1/2 font-mono text-[9px] uppercase tracking-[0.3em] text-accent/70 [writing-mode:vertical-rl] sm:block">
+                precision / curiosity / craft
+              </div>
+              <div className="relative overflow-hidden rounded-xl border border-primary/35 bg-card/80 glass p-2 hover-lift">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={hero.portrait.src}

@@ -27,6 +27,7 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personStructuredData) }}
       />
       <main className="relative min-h-screen overflow-hidden scanlines">
+        <div aria-hidden="true" className="tech-grid pointer-events-none absolute inset-x-0 top-0 h-[38rem] opacity-60" />
         <CursorGlow />
         <div className="relative z-10">
           <Header />
