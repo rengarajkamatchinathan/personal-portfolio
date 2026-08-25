@@ -27,9 +27,9 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personStructuredData) }}
       />
-      <main className="relative min-h-screen overflow-hidden scanlines">
+      <main className="relative min-h-screen overflow-clip scanlines">
         <div aria-hidden="true" className="tech-grid pointer-events-none absolute inset-x-0 top-0 h-[48rem] opacity-60" />
-        <ArcaneCommandScene />
+        <div className="arcane-scene"><ArcaneCommandScene /></div>
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(circle_at_66%_35%,transparent_0%,color-mix(in_oklch,var(--background)_20%,transparent)_38%,var(--background)_88%)]" />
         <CursorGlow />
         <div className="relative z-10">

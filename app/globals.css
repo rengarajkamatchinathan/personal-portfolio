@@ -5,9 +5,9 @@
 
 /* Arcane-industrial palette: graphite, emerald, gold, and parchment */
 :root {
-  --background: oklch(0.985 0.012 92);
-  --foreground: oklch(0.16 0.018 150);
-  --card: oklch(0.97 0.012 92);
+  --background: oklch(0.965 0.012 150);
+  --foreground: oklch(0.15 0.02 150);
+  --card: oklch(0.985 0.008 150);
   --card-foreground: oklch(0.16 0.018 150);
   --popover: oklch(0.97 0.012 92);
   --popover-foreground: oklch(0.16 0.018 150);
@@ -131,6 +131,17 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Keep the WebGL layer atmospheric and non-blocking across themes. */
+.arcane-scene { pointer-events: none; }
+.arcane-scene > div { opacity: 0.28; }
+.dark .arcane-scene > div { opacity: 0.72; }
+@media (prefers-reduced-motion: reduce) {
+  .arcane-scene { display: none; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+}
+
+html { scroll-behavior: smooth; }
 
 /* Enhanced cursor glow with smoother gradient */
 .cursor-glow {
