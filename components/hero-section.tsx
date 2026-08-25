@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { useEffect, useState } from "react"
+import { ArrowDownRight, Cpu, Orbit, Radio, Shield } from "lucide-react"
 import { hero } from "@/data/hero"
 
 export function HeroSection() {
@@ -10,120 +11,46 @@ export function HeroSection() {
   const [isDeleting, setIsDeleting] = useState(false)
 
   useEffect(() => {
-    const targetText = hero.roles[currentRole]
-    const timeout = setTimeout(
-      () => {
-        if (!isDeleting) {
-          if (displayText.length < targetText.length) {
-            setDisplayText(targetText.slice(0, displayText.length + 1))
-          } else {
-            setTimeout(() => setIsDeleting(true), 2000)
-          }
-        } else {
-          if (displayText.length > 0) {
-            setDisplayText(displayText.slice(0, -1))
-          } else {
-            setIsDeleting(false)
-            setCurrentRole((prev) => (prev + 1) % hero.roles.length)
-          }
-        }
-      },
-      isDeleting ? 50 : 100,
-    )
-    return () => clearTimeout(timeout)
+    const target = hero.roles[currentRole]
+    const timer = setTimeout(() => {
+      if (!isDeleting && displayText.length < target.length) setDisplayText(target.slice(0, displayText.length + 1))
+      else if (!isDeleting) setIsDeleting(true)
+      else if (displayText.length > 0) setDisplayText(displayText.slice(0, -1))
+      else { setIsDeleting(false); setCurrentRole((role) => (role + 1) % hero.roles.length) }
+    }, !isDeleting && displayText === target ? 1800 : isDeleting ? 42 : 82)
+    return () => clearTimeout(timer)
   }, [displayText, isDeleting, currentRole])
 
   return (
-    <section className="relative px-4 sm:px-6 pt-28 sm:pt-36 pb-16 sm:pb-24">
-      <div className="mx-auto max-w-7xl">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-20 lg:items-center lg:min-h-[70vh]">
-          {/* Left column - Text */}
-          <div className="space-y-8 sm:space-y-10">
-            <div className="space-y-3 animate-fade-in-up">
-              <div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.24em] text-primary">
-                <span className="inline-flex size-2 rounded-full bg-primary animate-pulse" />
-                <span>{hero.eyebrow}</span>
-                <span className="text-muted-foreground/50">// 04.26</span>
-              </div>
-              <h1 className="max-w-3xl text-4xl font-semibold tracking-[-0.04em] sm:text-5xl lg:text-7xl text-balance leading-[0.98]">
-                {hero.headlineLead}
-                <br />
-                <span
-                  className="inline-block whitespace-nowrap bg-gradient-to-l from-primary/50 to-accent text-transparent bg-clip-text typing-cursor"
-                >
-                  {displayText}
-                </span>
-              </h1>
-            </div>
-
-            <p className="max-w-lg text-base sm:text-lg leading-relaxed text-muted-foreground animate-fade-in-up stagger-2">
-              {hero.description.lead}
-              <span className="text-foreground font-medium">{hero.description.highlight}</span>
-              {hero.description.tail}
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up stagger-3">
-              <a
-                href={hero.ctas.primary.href}
-                className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-lg border border-primary bg-primary/10 px-7 py-4 sm:py-3.5 font-mono text-sm text-primary transition-all duration-500 hover:bg-primary hover:text-primary-foreground active:scale-[0.98]"
-              >
-                <span className="relative z-10">{hero.ctas.primary.label}</span>
-                <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1">→</span>
-                {/* Animated background */}
-                <span className="absolute inset-0 -translate-x-full bg-primary transition-transform duration-500 group-hover:translate-x-0" />
-              </a>
-              <Link
-                href={hero.ctas.secondary.href}
-                className="group inline-flex items-center justify-center gap-3 rounded-lg border border-border px-7 py-4 sm:py-3.5 font-mono text-sm text-muted-foreground transition-all duration-300 hover:border-foreground hover:text-foreground hover:bg-secondary/50 active:scale-[0.98]"
-              >
-                <span>{hero.ctas.secondary.label}</span>
-                <span className="opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
-                  →
-                </span>
-              </Link>
-            </div>
+    <section className="relative flex min-h-[min(920px,100svh)] items-center overflow-hidden px-4 pb-20 pt-32 sm:px-8 lg:px-14">
+      <div className="relative z-10 mx-auto grid w-full max-w-[1440px] items-center gap-14 lg:grid-cols-[1fr_0.92fr] lg:gap-8">
+        <div className="max-w-3xl">
+          <div className="mb-7 flex flex-wrap items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-primary">
+            <span className="flex items-center gap-2 border border-primary/40 bg-primary/10 px-3 py-2"><Radio className="size-3" data-icon="inline-start" /> {hero.eyebrow}</span>
+            <span className="text-muted-foreground">SECTOR // 04.26</span>
           </div>
-
-          {/* Right column - Photo */}
-          <div className="flex justify-center lg:justify-end animate-scale-in stagger-4">
-            <div className="relative w-full max-w-72">
-              <div className="absolute -inset-8 rounded-full border border-primary/15 rotate-12" />
-              <div className="absolute -inset-5 rounded-full border border-accent/20 -rotate-12" />
-              <div className="absolute -right-10 top-1/2 hidden -translate-y-1/2 font-mono text-[9px] uppercase tracking-[0.3em] text-accent/70 [writing-mode:vertical-rl] sm:block">
-                precision / curiosity / craft
-              </div>
-              <div className="relative overflow-hidden rounded-xl border border-primary/35 bg-card/80 glass p-2 hover-lift">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={hero.portrait.src}
-                  alt={hero.portrait.alt}
-                  className="aspect-4/5 w-full rounded-lg object-cover transition-all duration-500 hover:saturate-150 hover:brightness-110"
-                />
-              </div>
-
-              <div className="absolute -right-3 -top-3 sm:-right-4 sm:-top-4 rounded-lg border border-primary/40 bg-primary/15 glass px-3 py-1.5 font-mono text-[11px] sm:text-xs text-primary animate-float">
-                <span className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-                  {hero.badges.status}
-                </span>
-              </div>
-              <div
-                className="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 rounded-lg border border-border bg-card glass px-3 py-1.5 font-mono text-[11px] sm:text-xs text-muted-foreground animate-float"
-                style={{ animationDelay: "1s" }}
-              >
-                {hero.badges.role}
-              </div>
-
-              <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] rounded-full bg-primary/5 blur-3xl" />
-            </div>
+          <h1 className="text-balance font-sans text-5xl font-semibold leading-[0.92] tracking-[-0.065em] text-foreground sm:text-7xl lg:text-[7.6rem]">
+            {hero.headlineLead}<br /><span className="text-primary drop-shadow-[0_0_28px_color-mix(in_oklch,var(--primary)_55%,transparent)]">{displayText}<span className="text-accent">▋</span></span>
+          </h1>
+          <p className="mt-9 max-w-xl text-pretty text-base leading-7 text-muted-foreground sm:text-lg">{hero.description.lead}<strong className="font-medium text-foreground">{hero.description.highlight}</strong>{hero.description.tail}</p>
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <a href={hero.ctas.primary.href} className="group inline-flex items-center justify-between gap-8 border border-primary bg-primary px-5 py-4 font-mono text-xs uppercase tracking-[0.16em] text-primary-foreground transition-transform hover:-translate-y-1"><span>{hero.ctas.primary.label}</span><ArrowDownRight className="size-4 transition-transform group-hover:translate-x-1 group-hover:translate-y-1" data-icon="inline-end" /></a>
+            <Link href={hero.ctas.secondary.href} className="inline-flex items-center justify-center gap-3 border border-border bg-card/60 px-5 py-4 font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:border-accent hover:text-accent">{hero.ctas.secondary.label}<Orbit className="size-4" /></Link>
+          </div>
+          <div className="mt-14 grid max-w-xl grid-cols-3 border-y border-border/70 py-4 font-mono text-[9px] uppercase tracking-[0.16em] text-muted-foreground">
+            <span className="flex items-center gap-2"><Cpu className="size-3 text-primary" /> systems online</span><span className="flex items-center gap-2"><Shield className="size-3 text-accent" /> secure build</span><span>01 // engineer</span>
           </div>
         </div>
+        <div className="relative mx-auto aspect-square w-full max-w-[570px] lg:mx-0 lg:ml-auto">
+          <div className="absolute inset-[8%] rounded-full border border-primary/35 shadow-[0_0_100px_color-mix(in_oklch,var(--primary)_25%,transparent),inset_0_0_70px_color-mix(in_oklch,var(--primary)_12%,transparent)]" />
+          <div className="absolute inset-[17%] rounded-full border border-dashed border-accent/45 animate-[spin_36s_linear_infinite]" />
+          <div className="absolute inset-[28%] rounded-full border border-primary/30 animate-[spin_20s_linear_infinite_reverse]" />
+          <div className="absolute inset-[34%] rounded-full bg-primary/10 blur-3xl" />
+          <div className="absolute left-1/2 top-1/2 grid size-44 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-accent/70 bg-card/40 shadow-[0_0_60px_color-mix(in_oklch,var(--primary)_45%,transparent)] backdrop-blur-md sm:size-56"><div className="grid size-28 place-items-center rounded-full border border-primary/50 bg-primary/15 sm:size-36"><span className="font-serif text-6xl text-accent drop-shadow-[0_0_18px_var(--accent)]">R</span></div></div>
+          <span className="absolute left-[4%] top-[22%] font-mono text-[9px] uppercase tracking-[0.25em] text-accent">identity core / 001</span><span className="absolute bottom-[21%] right-[1%] font-mono text-[9px] uppercase tracking-[0.25em] text-primary">power routing / stable</span>
+        </div>
       </div>
-
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2 animate-fade-in stagger-6">
-        <span className="font-mono text-xs text-muted-foreground">scroll</span>
-        <div className="w-px h-12 bg-gradient-to-b from-primary/50 to-transparent animate-pulse" />
-      </div>
+      <div className="absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 items-center gap-3 font-mono text-[9px] uppercase tracking-[0.3em] text-muted-foreground lg:flex"><span>descend into the archive</span><ArrowDownRight className="size-3 text-primary" /></div>
     </section>
   )
 }

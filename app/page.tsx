@@ -9,6 +9,7 @@ import { BlogSection } from "@/components/blog-section"
 import { Education } from "@/components/education"
 import { Footer } from "@/components/footer"
 import { CursorGlow } from "@/components/cursor-glow"
+import { ArcaneCommandScene } from "@/components/arcane-command-scene"
 import { generateWebsiteStructuredData, generatePersonStructuredData } from "@/lib/structured-data"
 
 export default function Home() {
@@ -27,7 +28,9 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personStructuredData) }}
       />
       <main className="relative min-h-screen overflow-hidden scanlines">
-        <div aria-hidden="true" className="tech-grid pointer-events-none absolute inset-x-0 top-0 h-[38rem] opacity-60" />
+        <div aria-hidden="true" className="tech-grid pointer-events-none absolute inset-x-0 top-0 h-[48rem] opacity-60" />
+        <ArcaneCommandScene />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(circle_at_66%_35%,transparent_0%,color-mix(in_oklch,var(--background)_20%,transparent)_38%,var(--background)_88%)]" />
         <CursorGlow />
         <div className="relative z-10">
           <Header />
