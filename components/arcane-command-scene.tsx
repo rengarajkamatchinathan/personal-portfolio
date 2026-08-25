@@ -1,7 +1,7 @@
 "use client"
 
 import { Canvas, useFrame } from "@react-three/fiber"
-import { Icosahedron, Sparkles, Torus } from "@react-three/drei"
+import { Icosahedron, Sparkles, Stars, Torus } from "@react-three/drei"
 import { useEffect, useMemo, useRef } from "react"
 import type { MutableRefObject } from "react"
 import * as THREE from "three"
@@ -18,10 +18,11 @@ function Core() {
       <Icosahedron args={[1.15, 1]}>
         <meshStandardMaterial color="#08251b" emissive="#00a967" emissiveIntensity={1.4} metalness={0.8} roughness={0.25} wireframe />
       </Icosahedron>
-      <Icosahedron args={[0.62, 1]}>
-        <meshStandardMaterial color="#b8ffda" emissive="#18d985" emissiveIntensity={2.4} metalness={0.35} roughness={0.12} />
-      </Icosahedron>
-      <pointLight color="#21d98d" intensity={4} distance={5} />
+      <mesh>
+        <sphereGeometry args={[0.22, 16, 16]} />
+        <meshBasicMaterial color="#b8ffda" toneMapped={false} />
+      </mesh>
+      <pointLight color="#21d98d" intensity={3.2} distance={4.5} />
     </group>
   )
 }
@@ -78,6 +79,7 @@ export function ArcaneCommandScene() {
         <fog attach="fog" args={["#030b08", 5, 12]} />
         <ambientLight intensity={0.2} color="#b8ffda" />
         <directionalLight position={[3, 4, 5]} intensity={0.8} color="#d6a84f" />
+        <Stars radius={18} depth={16} count={900} factor={1.6} saturation={0.2} fade speed={0.12} />
         <SceneContent pointer={pointer} />
       </Canvas>
     </div>

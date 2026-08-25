@@ -22,7 +22,7 @@ export function HeroSection() {
   }, [displayText, isDeleting, currentRole])
 
   return (
-    <section className="relative flex min-h-[min(920px,100svh)] items-center overflow-hidden px-4 pb-20 pt-32 sm:px-8 lg:px-14">
+    <section className="relative flex min-h-[min(920px,100svh)] overflow-hidden px-4 pb-20 pt-32 sm:px-8 lg:px-14"><div className="mx-auto flex min-h-[calc(100svh-8rem)] w-full max-w-[1440px] items-center">
       <div className="relative z-10 mx-auto grid w-full max-w-[1440px] items-center gap-14 lg:grid-cols-[1fr_0.92fr] lg:gap-8">
         <div className="max-w-3xl">
           <div className="mb-7 flex flex-wrap items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-primary">
@@ -30,7 +30,7 @@ export function HeroSection() {
             <span className="text-muted-foreground">SECTOR // 04.26</span>
           </div>
           <h1 className="text-balance font-sans text-5xl font-semibold leading-[0.92] tracking-[-0.065em] text-foreground sm:text-7xl lg:text-[7.6rem]">
-            {hero.headlineLead}<br /><span className="text-primary drop-shadow-[0_0_28px_color-mix(in_oklch,var(--primary)_55%,transparent)]">{displayText}<span className="text-accent">▋</span></span>
+            {hero.headlineLead}<br /><span className="inline-block min-w-[12ch] text-primary drop-shadow-[0_0_28px_color-mix(in_oklch,var(--primary)_55%,transparent)]">{displayText}<span className="text-accent">▋</span></span>
           </h1>
           <p className="mt-9 max-w-xl text-pretty text-base leading-7 text-muted-foreground sm:text-lg">{hero.description.lead}<strong className="font-medium text-foreground">{hero.description.highlight}</strong>{hero.description.tail}</p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -51,6 +51,7 @@ export function HeroSection() {
         </div>
       </div>
       <div className="absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 items-center gap-3 font-mono text-[9px] uppercase tracking-[0.3em] text-muted-foreground lg:flex"><span>descend into the archive</span><ArrowDownRight className="size-3 text-primary" /></div>
+      </div>
     </section>
   )
 }
